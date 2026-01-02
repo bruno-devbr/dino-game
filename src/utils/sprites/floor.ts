@@ -1,4 +1,5 @@
 import { k } from "../global/kaplay";
+import { buildCactus } from "./cactus";
 
 k.loadRoot("/assets/");
 k.loadSprite("floor", "floor.png");
@@ -8,12 +9,14 @@ let speed = 125;
 let count = 0;
 
 export function setupFloor(value: boolean) {
+    let minDistance = buildCactus(speed);
+
     for (let i = 0; i < 2; i++) {
         const floor = k.add([
             k.sprite("floor", { width: k.width() }),
             k.pos(i * k.width(), k.height() / 2),
             k.body({ isStatic: true }),
-            k.area(),
+            k.area({ offset: { y: 20, x: 0 } }),
             "floor",
         ]);
 
@@ -28,11 +31,16 @@ export function setupFloor(value: boolean) {
                 f.pos.x = k.width();
             }
 
-            if ((count % 900 === 0) & (speed < 800)) {
-                speed += 25;
-            }
-
             count++;
+
+            if (count >= minDistance) {
+                count = 0;
+                minDistance = buildCactus(speed);
+
+                if (speed < 450) {
+                    speed += 10;
+                }
+            }
         });
     }
 }

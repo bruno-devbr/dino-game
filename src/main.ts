@@ -1,3 +1,6 @@
+import { k } from "./utils/global/kaplay";
 import { setupFloor } from "./utils/sprites/floor";
 
-setupFloor(true);
+k.setGravity(1000);
+
+setupFloor(false);
