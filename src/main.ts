@@ -4,19 +4,19 @@ import { dino } from "./utils/sprites/dinos";
 import { setupFloor } from "./utils/sprites/floor";
 
 let isGameRunning = false;
-let interval;
+let interval: ReturnType<typeof setInterval> | undefined;
 
 const minTime = 10;
 const maxTime = 15;
 
-let restart;
-let time;
+// Removed unused 'restart' variable
+let time: number;
 
-let dinoJumpEvent;
-let dinoDieEvent;
-let dinoDown;
-let dinoGroundEvent;
-let dinoStopCrounch;
+let dinoJumpEvent: ReturnType<typeof dino.onKeyDown> | undefined;
+let dinoDieEvent: ReturnType<typeof dino.onCollide> | undefined;
+let dinoDown: ReturnType<typeof dino.onKeyPress> | undefined;
+let dinoGroundEvent: ReturnType<typeof dino.onGround> | undefined;
+let dinoStopCrounch: ReturnType<typeof k.onKeyRelease> | undefined;
 
 function runGame() {
     k.setGravity(400);
@@ -42,7 +42,8 @@ function runGame() {
     }
 }
 
-restart = k.onKeyPress((e) => {
+// Directly call k.onKeyPress
+k.onKeyPress((e) => {
     if ((e === "space" || e === "up") && !isGameRunning) {
         k.destroyAll("cactus");
         k.destroyAll("cloud");

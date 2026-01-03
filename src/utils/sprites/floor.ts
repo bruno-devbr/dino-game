@@ -4,8 +4,8 @@ import { buildCactus } from "./cactus";
 k.loadRoot("/assets/");
 k.loadSprite("floor", "floor.png");
 
-const floorArr = [];
-let event;
+const floorArr: ReturnType<typeof k.add>[] = [];
+let event: ReturnType<typeof k.onUpdate> | undefined;
 
 export function setupFloor(value: boolean) {
     let speed = 125;
@@ -21,7 +21,7 @@ export function setupFloor(value: boolean) {
             k.sprite("floor", { width: k.width() }),
             k.pos(i * k.width(), k.height() / 2),
             k.body({ isStatic: true }),
-            k.area({ offset: { y: 20, x: 0 } }),
+            k.area({ offset: new k.Vec2(0, 20) }),
             "floor",
         ]);
 
