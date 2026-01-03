@@ -3,13 +3,11 @@ import { setCloud } from "./utils/sprites/clouds";
 import { dino } from "./utils/sprites/dinos";
 import { setupFloor } from "./utils/sprites/floor";
 
-k.debug.inspect = true;
-
 let isGameRunning = false;
 let interval;
 
-const minTime = 5;
-const maxTime = 9;
+const minTime = 10;
+const maxTime = 15;
 
 let restart;
 let time;
@@ -27,7 +25,7 @@ function runGame() {
     time = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime);
 
     interval = setInterval(() => {
-        setCloud(false);
+        setCloud(true);
         time = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime);
     }, time * 1000);
 
@@ -51,6 +49,10 @@ restart = k.onKeyPress((e) => {
 
         dino.area.scale = new k.Vec2(0.4, 1);
         dino.area.offset = new k.Vec2(-10, -10);
+
+        if (dinoDieEvent) {
+            dino.pos.y = k.height() / 2 + 40;
+        }
 
         isGameRunning = true;
         runGame();

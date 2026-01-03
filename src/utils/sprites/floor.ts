@@ -40,7 +40,7 @@ export function setupFloor(value: boolean) {
                 count = 0;
                 minDistance = buildCactus(speed);
 
-                if (speed < 450) {
+                if (speed < 600) {
                     speed += 10;
                 }
             }

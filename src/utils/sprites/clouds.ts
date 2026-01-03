@@ -11,16 +11,16 @@ export function setCloud(value: boolean) {
         Math.random() * (maxHeight - minHeight + 1) + minHeight
     );
 
-    const cloud = k.add([k.sprite("cloud"), k.pos(k.width(), height), "cloud"]);
+    const cloud = k.add([
+        k.sprite("cloud"),
+        k.pos(k.width(), height),
+        k.offscreen({ destroy: true }),
+        "cloud",
+    ]);
 
     if (!value) return;
 
     cloud.onUpdate(() => {
         cloud.move(-25, 0);
-
-        if (cloud.pos.x < 0) {
-            cloud.destroy();
-            setCloud(true);
-        }
     });
 }

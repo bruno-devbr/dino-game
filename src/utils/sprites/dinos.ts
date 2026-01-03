@@ -34,7 +34,7 @@ export const dino = k.add([
         scale: new k.Vec2(0.4, 1),
         offset: new k.Vec2(-10, -10),
     }),
-    k.body({ stickToPlatform: false, jumpForce: 325 }),
+    k.body({ stickToPlatform: false, jumpForce: 300 }),
     k.anchor("bot"),
     k.z(20),
     "dino",
