@@ -1,6 +1,6 @@
 import { k } from "../global/kaplay";
 
-k.loadRoot("/assets/");
+k.loadRoot("/");
 k.loadSprite("cloud", "cloud.png");
 
 export function setCloud(value: boolean) {

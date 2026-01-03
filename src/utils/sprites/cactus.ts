@@ -1,6 +1,6 @@
 import { k } from "../global/kaplay";
 
-k.loadRoot("/assets/");
+k.loadRoot("/");
 
 k.loadSprite("cactus_alone", "cacto1.png");
 k.loadSprite("cactus_pair", "cacto2.png");

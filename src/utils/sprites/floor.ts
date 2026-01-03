@@ -1,7 +1,7 @@
 import { k } from "../global/kaplay";
 import { buildCactus } from "./cactus";
 
-k.loadRoot("/assets/");
+k.loadRoot("/");
 k.loadSprite("floor", "floor.png");
 
 const floorArr: ReturnType<typeof k.add>[] = [];

@@ -1,6 +1,6 @@
 import { k } from "../global/kaplay";
 
-k.loadRoot("/assets/");
+k.loadRoot("/");
 k.loadSprite("dinos", "dino.png", {
     sliceX: 7,
     anims: {
