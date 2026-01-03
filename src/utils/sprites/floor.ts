@@ -5,11 +5,16 @@ k.loadRoot("/assets/");
 k.loadSprite("floor", "floor.png");
 
 const floorArr = [];
-let speed = 125;
-let count = 0;
+let event;
 
 export function setupFloor(value: boolean) {
+    let speed = 125;
+    let count = 0;
+
     let minDistance = buildCactus(speed);
+
+    floorArr.length = 0;
+    k.destroyAll("floor");
 
     for (let i = 0; i < 2; i++) {
         const floor = k.add([
@@ -24,14 +29,12 @@ export function setupFloor(value: boolean) {
     }
 
     if (value) {
-        k.onUpdate("floor", (f) => {
+        event = k.onUpdate("floor", (f) => {
             f.move(-speed, 0);
 
             if (f.pos.x <= -k.width()) {
                 f.pos.x = k.width();
             }
-
-            count++;
 
             if (count >= minDistance) {
                 count = 0;
@@ -41,6 +44,12 @@ export function setupFloor(value: boolean) {
                     speed += 10;
                 }
             }
+
+            count++;
         });
+    } else {
+        if (event) {
+            event.cancel();
+        }
     }
 }
